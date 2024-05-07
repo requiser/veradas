@@ -1,0 +1,27 @@
+<div class="row col-md-6">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Időpont</th>
+                <th>Donor</th>
+                <th>Helyszín</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(trans of reservations; track $index) {
+            <tr>
+                <td>{{ trans.id }}</td>
+                <td>{{ trans.reservationDate | date }}</td>
+                <td>{{ trans.donor?.name }} ({{ trans.donor?.id }})</td>
+                <td>{{ trans.location?.name }} ({{ trans.location?.id }})</td>
+                <td>
+                  <button class="btn btn-outline-primary me-2" (click)="editReservation(trans.id)">Módosítás</button>
+                  <button class="btn btn-outline-danger" (click)="deleteReservation(trans.id)">Törlés</button>
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
