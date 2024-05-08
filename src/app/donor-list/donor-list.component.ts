@@ -24,8 +24,8 @@ export class DonorListComponent implements OnInit {
     });
   }
 
-  listReservationsForDonor(id: number) {
-    this.router.navigate([ 'reservations-of-donor', id ]);
+  listDonationsForDonor(id: number) {
+    this.router.navigate([ 'donation-of-donor', id ]);
   }
 
   editDonor(id: number) {

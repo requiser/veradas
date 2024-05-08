@@ -43,7 +43,6 @@ export class DonorFormComponent implements OnInit {
 
   saveDonor() {
     const donor = this.donorForm.value;
-    console.log(donor.idCard)
     if(this.isValidTAJ((donor as DonorDTO).idCard)){
       if (this.isNewDonor) {
         this.donorService.create(donor as DonorDTO).subscribe({
@@ -88,7 +87,6 @@ export class DonorFormComponent implements OnInit {
         const digit = parseInt(idCardStr[i]);
         sum += (i % 2 === 0) ? digit * 3 : digit * 7;
         console.log(sum);
-        if (i<7) {if (digit == parseInt(idCardStr[i+1])-1){} else {return false;} }
     }
     const checksum = sum % 10;
     const lastDigit = parseInt(idCardStr[8]);

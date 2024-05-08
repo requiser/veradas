@@ -21,7 +21,7 @@
             <td>{{ donor.phone }}</td>
             <td>{{ donor.idCard }}</td>
             <td>
-                <button class="btn btn-outline-primary me-2" (click)="listReservationsForDonor(donor.id)">Foglalások</button>
+                <button class="btn btn-outline-primary me-2" (click)="listDonationsForDonor(donor.id)">Foglalások</button>
                 <button class="btn btn-outline-primary me-2" (click)="editDonor(donor.id)">Módosítás</button>
                 <button class="btn btn-outline-danger" (click)="deleteDonor(donor.id)">Törlés</button>
             </td>

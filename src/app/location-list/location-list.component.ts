@@ -28,8 +28,8 @@ export class LocationListComponent implements OnInit {
     });
   }
 
-  listReservationsForLocation(id: number) {
-    this.router.navigate([ 'reservations-of-location', id ]);
+  listDonationsForLocation(id: number) {
+    this.router.navigate([ 'donation-of-location', id ]);
   }
 
   editLocation(id: number) {

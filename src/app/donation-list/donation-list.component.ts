@@ -1,33 +1,33 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ReservationService } from '../services/reservation.service';
-import { ReservationDTO } from '../../../models';
+import { DonationService } from '../services/donation.service';
+import { DonationDTO } from '../../../models';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import {waitForAsync} from "@angular/core/testing";
 
 @Component({
-  selector: 'app-reservation-list',
+  selector: 'app-donation-list',
   standalone: true,
   imports: [DatePipe],
-  templateUrl: './reservation-list.component.html',
-  styleUrl: './reservation-list.component.css'
+  templateUrl: './donation-list.component.html',
+  styleUrl: './donation-list.component.css'
 })
-export class ReservationListComponent implements OnInit {
-  reservationService = inject(ReservationService);
+export class DonationListComponent implements OnInit {
+  donationService = inject(DonationService);
   toastrService = inject(ToastrService);
   route = inject(ActivatedRoute);
   router = inject(Router);
 
-  reservations: ReservationDTO[] = [];
+  donations: DonationDTO[] = [];
 
   ngOnInit(): void {
     const donorId = this.route.snapshot.params['donorId'];
     const locationId = this.route.snapshot.params['locationId'];
 
     if (donorId!==undefined){
-      this.reservationService.getReservationsOfDonor(donorId).subscribe({
-        next: (trans) => this.reservations = trans,
+      this.donationService.getDonationsOfDonor(donorId).subscribe({
+        next: (trans) => this.donations = trans,
         error: err => {
           console.error(err);
           this.toastrService.error('Hiba a betöltés során.', 'Hiba');
@@ -35,8 +35,8 @@ export class ReservationListComponent implements OnInit {
     });
     }
     else if (locationId!==undefined) {
-      this.reservationService.getReservationsOfLocation(locationId).subscribe({
-        next: (trans) => this.reservations = trans,
+      this.donationService.getDonationsOfLocation(locationId).subscribe({
+        next: (trans) => this.donations = trans,
         error: err => {
           console.error(err);
           this.toastrService.error('Hiba a betöltés során.', 'Hiba');
@@ -44,23 +44,23 @@ export class ReservationListComponent implements OnInit {
       });
     }
     else {
-      this.reservationService.getAll().subscribe({
-      next: (reservations) => this.reservations = reservations,
+      this.donationService.getAll().subscribe({
+      next: (donations) => this.donations = donations,
       error: err => console.error(err)
     });
     }
   }
 
-  editReservation(id: number) {
-    this.router.navigate([ 'edit-reservation', id ]);
+  editDonation(id: number) {
+    this.router.navigate([ 'edit-donation', id ]);
   }
 
-  deleteReservation(id: number) {
-    this.reservationService.delete(id).subscribe({
+  deleteDonation(id: number) {
+    this.donationService.delete(id).subscribe({
       next: () => {
         this.toastrService.success('Sikeres törlés', 'Siker')
-        const index = this.reservations.findIndex((reservation) => reservation.id == id);
-        this.reservations.splice(index, 1);
+        const index = this.donations.findIndex((donation) => donation.id == id);
+        this.donations.splice(index, 1);
       },
       error: (err) => {
         console.error(err);

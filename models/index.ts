@@ -1,3 +1,5 @@
+import {Column} from "typeorm";
+
 export interface DonorDTO {
     id: number;
     name: string;
@@ -13,9 +15,15 @@ export interface LocationDTO {
     active: boolean;
 }
 
-export interface ReservationDTO {
+export interface DonationDTO {
     id: number;
-    reservationDate: string;
+    donationDate: string;
     donor: DonorDTO|null;
     location: LocationDTO|null;
+    can_donate: boolean;
+    reason: string;
+    doctor: string;
+    directed: boolean;
+    recipient_name: string;
+    recipient_idCard: number;
 }

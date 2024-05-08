@@ -1,17 +1,17 @@
 import { Controller } from "./base.controller";
 import { AppDataSource } from "../data-source";
-import { Reservation } from "../entity/Reservation";
+import { Donation } from "../entity/Donation";
 import { Donor } from "../entity/Donor";
 import { Location } from "../entity/Location";
 
-export class ReservationController extends Controller {
-    repository = AppDataSource.getRepository(Reservation);
+export class DonationController extends Controller {
+    repository = AppDataSource.getRepository(Donation);
     donorRepository = AppDataSource.getRepository(Donor);
     locationRepository = AppDataSource.getRepository(Location);
 
     create = async (req, res) => {
         try {
-            const entity = this.repository.create(req.body as Reservation);
+            const entity = this.repository.create(req.body as Donation);
 
             const donor = await this.donorRepository.findOne({
                 where: { id: entity.donor.id }
@@ -34,51 +34,34 @@ export class ReservationController extends Controller {
         }
     };
 
-    getReservationsOfDonor = async (req, res) => {
+    getDonationsOfDonor = async (req, res) => {
         try {
             const donorId = req.params.donorId;
 
-            // select reservations where source.id = donorId or destination.id = donorId
-            const reservation = await this.repository.find({
+            // select donations where source.id = donorId or destination.id = donorId
+            const donation = await this.repository.find({
                 where: [
                     { donor: { id: donorId } }
                 ]
             });
 
-            res.json(reservation);
+            res.json(donation);
         } catch (err) {
             this.handleError(res, err);
         }
     };
-    getReservationsOfLocation = async (req, res) => {
+    getDonationsOfLocation = async (req, res) => {
         try {
             const locationId = req.params.locationId;
 
-            // select reservations where source.id = donorId or destination.id = donorId
-            const reservation = await this.repository.find({
+            // select donations where source.id = donorId or destination.id = donorId
+            const donation = await this.repository.find({
                 where: [
                     { location: { id: locationId } }
                 ]
             });
 
-            res.json(reservation);
-        } catch (err) {
-            this.handleError(res, err);
-        }
-    };
-    update = async (req, res) => {
-        try {
-            const id = req.body.id;
-
-            let entity = await this.repository.findOneBy({ id });
-            if (!entity) {
-                return this.handleError(res, null, 404, "No entity found with the given id.");
-            }
-
-            entity = this.repository.create(req.body as object);
-
-            const insertedEntity = await this.repository.save(entity);
-            res.json(insertedEntity);
+            res.json(donation);
         } catch (err) {
             this.handleError(res, err);
         }

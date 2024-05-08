@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
-import { Reservation } from "./Reservation";
+import { Donation } from "./Donation";
 import { DonorDTO } from "../../../models";
 
 @Entity()
@@ -20,6 +20,6 @@ export class Donor implements DonorDTO {
     @Column()
     idCard: number;
 
-    @OneToMany(type => Reservation, reservation => reservation.donor)
-    reservation: Reservation[];
+    @OneToMany(type => Donation, donation => donation.donor)
+    donation: Donation[];
 }

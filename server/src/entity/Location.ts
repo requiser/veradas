@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
-import { Reservation } from "./Reservation";
+import { Donation } from "./Donation";
 import {LocationDTO} from "../../../models";
 
 @Entity()
@@ -17,6 +17,6 @@ export class Location implements LocationDTO {
     @Column()
     active: boolean;
 
-    @OneToMany(type => Reservation, reservation => reservation.location)
-    reservation: Reservation[];
+    @OneToMany(type => Donation, donation => donation.location)
+    donation: Donation[];
 }

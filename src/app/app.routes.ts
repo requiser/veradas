@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { DonorListComponent } from './donor-list/donor-list.component';
 import { DonorFormComponent } from './donor-form/donor-form.component';
-import { ReservationFormComponent } from './reservation-form/reservation-form.component';
-import { ReservationListComponent } from './reservation-list/reservation-list.component';
+import { DonationFormComponent } from './donation-form/donation-form.component';
+import { DonationListComponent } from './donation-list/donation-list.component';
 import {LocationListComponent} from "./location-list/location-list.component";
 import {LocationFormComponent} from "./location-form/location-form.component";
 
@@ -40,19 +40,19 @@ export const routes: Routes = [
         component: LocationFormComponent
     },
     {
-        path: 'add-reservation',
-        component: ReservationFormComponent
+        path: 'add-donation',
+        component: DonationFormComponent
     },
     {
-        path: 'reservations-of-location/:locationId',
-        component: ReservationListComponent
+        path: 'donation-of-location/:locationId',
+        component: DonationListComponent
     },
     {
-        path: 'reservations-of-donor/:donorId',
-        component: ReservationListComponent
+        path: 'donation-of-donor/:donorId',
+        component: DonationListComponent
     },
     {
-        path: 'edit-reservation/:id',
-        component: ReservationFormComponent
+        path: 'edit-donation/:id',
+        component: DonationFormComponent
     }
 ];

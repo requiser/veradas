@@ -1,6 +1,6 @@
 import express from 'express';
 import { DonorController } from './controller/donor.controller';
-import { ReservationController } from './controller/reservation.controller';
+import { DonationController } from './controller/donation.controller';
 import {LocationController} from "./controller/location.controller";
 
 export function getRouter() {
@@ -22,14 +22,14 @@ export function getRouter() {
     router.put('/location', locationController.update);
     router.delete('/location/:id', locationController.delete);
 
-    const reservationController = new ReservationController();
+    const donationController = new DonationController();
 
-    router.get('/reservation', locationController.getAll);
-    router.post('/reservation', reservationController.create);
-    router.get('/reservation/:id', reservationController.getOne);
-    router.put('/reservation', locationController.update);
-    router.get('/reservation/of/donor/:donorId', reservationController.getReservationsOfDonor);
-    router.get('/reservation/of/location/:locationId', reservationController.getReservationsOfLocation);
-    router.delete('/reservation/:id', locationController.delete);
+    router.get('/donation', donationController.getAll);
+    router.post('/donation', donationController.create);
+    router.get('/donation/:id', donationController.getOne);
+    router.put('/donation', donationController.update);
+    router.get('/donation/of/donor/:donorId', donationController.getDonationsOfDonor);
+    router.get('/donation/of/location/:locationId', donationController.getDonationsOfLocation);
+    router.delete('/donation/:id', donationController.delete);
     return router;
 }
