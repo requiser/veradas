@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import {Component, inject} from '@angular/core';
+import {Router, RouterLink, RouterOutlet} from '@angular/router';
+import {AuthService} from "./services/auth.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-root',
@@ -10,4 +12,13 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'veradas-app';
+  authService = inject(AuthService);
+  router = inject(Router);
+  toastrService = inject(ToastrService);
+
+  logout() {
+    this.authService.removeToken();
+    this.router.navigateByUrl('/');
+    this.toastrService.success('Sikeresen kijelentkezett.', 'Kilépés');
+  }
 }

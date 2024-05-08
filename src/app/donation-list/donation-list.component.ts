@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import {waitForAsync} from "@angular/core/testing";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-donation-list',
@@ -14,6 +15,7 @@ import {waitForAsync} from "@angular/core/testing";
   styleUrl: './donation-list.component.css'
 })
 export class DonationListComponent implements OnInit {
+  authService = inject(AuthService);
   donationService = inject(DonationService);
   toastrService = inject(ToastrService);
   route = inject(ActivatedRoute);

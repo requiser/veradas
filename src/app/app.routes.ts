@@ -5,6 +5,10 @@ import { DonationFormComponent } from './donation-form/donation-form.component';
 import { DonationListComponent } from './donation-list/donation-list.component';
 import {LocationListComponent} from "./location-list/location-list.component";
 import {LocationFormComponent} from "./location-form/location-form.component";
+import {LoginComponent} from "./login/login.component";
+import {inject} from "@angular/core";
+import {RegistrationComponent} from "./registration/registration.component";
+import {AuthService} from "./services/auth.service";
 
 export const routes: Routes = [
     {
@@ -17,11 +21,13 @@ export const routes: Routes = [
     },
     {
         path: 'add-donor',
-        component: DonorFormComponent
+        component: DonorFormComponent,
+        canActivate: [ () => inject(AuthService).preventGuestAccess() ]
     },
     {
         path: 'edit-donor/:id',
-        component: DonorFormComponent
+        component: DonorFormComponent,
+        canActivate: [ () => inject(AuthService).preventGuestAccess() ]
     },
     {
         path: '',
@@ -33,15 +39,18 @@ export const routes: Routes = [
     },
     {
         path: 'add-location',
-        component: LocationFormComponent
+        component: LocationFormComponent,
+        canActivate: [ () => inject(AuthService).preventGuestAccess() ]
     },
     {
         path: 'edit-location/:id',
-        component: LocationFormComponent
+        component: LocationFormComponent,
+        canActivate: [ () => inject(AuthService).preventGuestAccess() ]
     },
     {
         path: 'add-donation',
-        component: DonationFormComponent
+        component: DonationFormComponent,
+        canActivate: [ () => inject(AuthService).preventGuestAccess() ]
     },
     {
         path: 'donation-of-location/:locationId',
@@ -53,6 +62,15 @@ export const routes: Routes = [
     },
     {
         path: 'edit-donation/:id',
-        component: DonationFormComponent
+        component: DonationFormComponent,
+        canActivate: [ () => inject(AuthService).preventGuestAccess() ]
+    },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'registration',
+        component: RegistrationComponent
     }
 ];

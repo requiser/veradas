@@ -3,6 +3,7 @@ import { DonorService } from '../services/donor.service';
 import { DonorDTO } from '../../../models';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-donor-list',
@@ -12,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './donor-list.component.css'
 })
 export class DonorListComponent implements OnInit {
+  authService = inject(AuthService);
   donors: DonorDTO[] = [];
   donorService = inject(DonorService);
   router = inject(Router);

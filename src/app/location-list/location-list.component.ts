@@ -3,6 +3,7 @@ import {LocationDTO} from '../../../models';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {LocationService} from "../services/location.service";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-donor-list',
@@ -12,13 +13,10 @@ import {LocationService} from "../services/location.service";
   styleUrl: './location-list.component.css'
 })
 export class LocationListComponent implements OnInit {
-
   locations: LocationDTO[] = [];
-
+  authService = inject(AuthService);
   locationService = inject(LocationService);
-
   router = inject(Router);
-
   toastrService = inject(ToastrService);
 
   ngOnInit(): void {

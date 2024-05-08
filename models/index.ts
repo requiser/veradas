@@ -27,3 +27,22 @@ export interface DonationDTO {
     recipient_name: string;
     recipient_idCard: number;
 }
+
+export interface UserDTO {
+  id: number;
+  name: string;
+  address: string;
+  phone: string;
+  idCard: number;
+  email: string;
+  password: string;
+}
+
+export interface LoginDTO {
+  email: string;
+  password: string;
+}
+
+export interface AccessTokenDTO {
+  accessToken: string;
+}

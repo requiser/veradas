@@ -4,6 +4,7 @@ import { LocationDTO } from '../../../models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LocationService } from '../services/location.service';
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-location-form',
@@ -13,6 +14,7 @@ import { LocationService } from '../services/location.service';
   styleUrl: './location-form.component.css'
 })
 export class LocationFormComponent implements OnInit {
+  authService = inject(AuthService);
   fb = inject(FormBuilder);
   route = inject(ActivatedRoute);
   router = inject(Router);

@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import {LocationService} from "../services/location.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NgIf} from "@angular/common";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-donation',
@@ -16,7 +17,7 @@ import {NgIf} from "@angular/common";
   styleUrl: './donation-form.component.css'
 })
 export class DonationFormComponent implements OnInit {
-
+  authService = inject(AuthService);
   donorService = inject(DonorService);
   locationService = inject(LocationService);
   donationService = inject(DonationService);

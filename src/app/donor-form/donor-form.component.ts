@@ -4,6 +4,7 @@ import { DonorDTO } from '../../../models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DonorService } from '../services/donor.service';
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-donor-form',
@@ -13,6 +14,7 @@ import { DonorService } from '../services/donor.service';
   styleUrl: './donor-form.component.css'
 })
 export class DonorFormComponent implements OnInit {
+  authService = inject(AuthService);
   fb = inject(FormBuilder);
   route = inject(ActivatedRoute);
   router = inject(Router);

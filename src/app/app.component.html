@@ -13,17 +13,30 @@
         </li>
         <li class="nav-item">
         <li class="nav-item">
-          <a class="nav-link" routerLink="add-donor">Új véradó</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link active" routerLink="location-list">Véradópont</a>
         </li>
+        @if(authService.isLoggedIn()) {
+          <li class="nav-item">
+            <a class="nav-link" routerLink="add-donor">Új véradó</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="add-location">Új véradó pont</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="add-donation">Időpont foglalás</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="logout()">Kilépés</a>
+          </li>
+        }
+        @if(!authService.isLoggedIn()) {
         <li class="nav-item">
-          <a class="nav-link" routerLink="add-location">Új véradó pont</a>
+          <a class="nav-link" routerLink="registration">Regisztráció</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="add-donation">Időpont foglalás</a>
+          <a class="nav-link" routerLink="login">Bejelentkezés</a>
         </li>
+        }
       </ul>
     </div>
   </div>
