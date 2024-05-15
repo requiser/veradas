@@ -59,7 +59,7 @@
             </div>
             <div class="mb-3" *ngIf="donationForm.get('directed')?.value">
                 <label for="recipient_idCard" class="form-label">Fogadó Beteg TAJ száma</label>
-                <input type="text" class="form-control" maxlength="9" id="recipient_idCard" formControlName="recipient_idCard">
+                <input type="text" class="form-control" pattern="\d*" maxlength="9" id="recipient_idCard" formControlName="recipient_idCard">
             </div>
         </form>
         <div class="text-end">

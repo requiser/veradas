@@ -75,15 +75,12 @@ export class DonorFormComponent implements OnInit {
           this.toastrService.error('Hibás TAJ szám.', 'Hiba')
     }
   }
-  //123456788
-  //234567898
   isValidTAJ(idCard: number): boolean {
     const idCardStr = idCard.toString();
 
     if (idCardStr.length !== 9) {
         return false;
     }
-
     let sum = 0;
     for (let i = 0; i < 8; i++) {
         const digit = parseInt(idCardStr[i]);
@@ -94,5 +91,5 @@ export class DonorFormComponent implements OnInit {
     const lastDigit = parseInt(idCardStr[8]);
     console.log(checksum+', '+lastDigit)
     return checksum === lastDigit;
-}
+  }
 }
