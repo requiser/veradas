@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.3.3",
-    "@angular/common": "^17.2.0",
+    "@angular/common": "^17.3.8",
     "@angular/compiler": "^17.2.0",
     "@angular/core": "^17.2.0",
     "@angular/forms": "^17.2.0",
@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.2.0",
-    "@angular/cli": "^17.2.0",
+    "@angular/cli": "^17.3.7",
     "@angular/compiler-cli": "^17.2.0",
     "@angular/localize": "^17.2.0",
     "@types/bcrypt": "^5.0.2",
