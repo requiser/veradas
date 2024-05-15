@@ -10,10 +10,6 @@
     <div class="col-md-6">
         <form [formGroup]="donationForm">
             <div class="mb-3">
-                <label for="id" class="form-label">Foglalás kód</label>
-                <input type="text" class="form-control" id="id" formControlName="id">
-            </div>
-            <div class="mb-3">
                 <label for="location" class="form-label">Helyszín</label>
                 <select id="location" class="form-select" formControlName="location">
                     @for(location of locations; track $index) {
